@@ -31,7 +31,7 @@ import static java.util.logging.Level.WARNING;
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
  *    <em>@Github</em>    Github.com/JohnLoeffler
- *    <em>@Bitbucket</em> Bitbucket.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  */
 public class IOStatics{
   private static final Logger LOG = Logger.GetInstance();
@@ -79,7 +79,7 @@ public class IOStatics{
    * @param filename The filename including the path
    * @return A byte array containing the file contents
    */
-  public static synchronized byte[]  GetFileAsBytes(String filename){
+  public static byte[]  GetFileAsBytes(String filename){
     byte[] buf = new byte[2048];
     int read = 0;
     long size = 0;
@@ -107,7 +107,7 @@ public class IOStatics{
    * @param file The file to read in as bytes
    * @return A byte array containing the file contents
    */
-  public static synchronized byte[]  GetFileAsBytes(File file){
+  public static byte[]  GetFileAsBytes(File file){
     byte[] buf = new byte[2048];
     int read = 0;
     long size = 0;
@@ -135,7 +135,7 @@ public class IOStatics{
    * @param bytes The byte array to convert
    * @return An object
    */
-  public static synchronized Object  ConvertBytesToObject(byte[] bytes){
+  public static Object  ConvertBytesToObject(byte[] bytes){
     ByteArrayInputStream bis = new ByteArrayInputStream(bytes);
     ObjectInput in = null;
     Object o = null;
@@ -169,7 +169,7 @@ public class IOStatics{
    * @param o The object to convert
    * @return a byte array of the object
    */
-  public static synchronized byte[]  ConvertObjectToBytes(Object o){
+  public static byte[]  ConvertObjectToBytes(Object o){
     ObjectOutput out = null;
     try(ByteArrayOutputStream bos = new ByteArrayOutputStream()){
       out = new ObjectOutputStream(bos);
@@ -254,7 +254,7 @@ public class IOStatics{
    *  @param url The URL to get the input stream from
    *  @return An InputStream from the given url
    */
-  public static synchronized InputStream GetURLStream(String url){
+  public static InputStream GetURLStream(String url){
     InputStream in = null;
     try{
       URL turl = new URL(url);
@@ -275,18 +275,12 @@ public class IOStatics{
    *  @param is An InputStream to read
    *  @return A byte array
    */
-  public static synchronized byte[]  GetBytesFromInputStream(InputStream is){
+  public static byte[]  GetBytesFromInputStream(InputStream is){
     try(ByteArrayOutputStream bos = new ByteArrayOutputStream()){
-        
-      //  SETUP A READ BUFFER
       byte[] buf = new byte[2048];
-
-      //  READ IN THE INPUT AS A SERIES OF BYTES
       for(int bytesRead; (bytesRead = is.read(buf)) != -1;){
         bos.write(buf, 0, bytesRead);
       }
-
-      // GET THE BUFFERED IMAGE AS A BYTE ARRAY
       return bos.toByteArray();
     }catch (IOException ioe){
       LOG.Log(Statics.Class(), Statics.Method(), Statics.Line(),String.format(
@@ -304,7 +298,7 @@ public class IOStatics{
    * @param bytes The byte array to create the input stream from
    * @return An InputStream for the byte array
    */
-  public static synchronized InputStream GetInputStreamFromBytes(byte[] bytes){
+  public static InputStream GetInputStreamFromBytes(byte[] bytes){
     try(ByteArrayInputStream bis = new ByteArrayInputStream(bytes)){
       return bis;
     }catch(IOException ioe){
