@@ -16,8 +16,8 @@ import javax.imageio.ImageIO;
  *    <em>@Email</em>     John.Loeffler@gmail.com
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
- *    <em>@Github</em>    github.com/JohnLoeffler
- *    <em>@Website</em>   JohnLoeffler.com
+ *    <em>@Github</em>    Github.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  */
 public class ImageStatics {
   private static final Logger LOG = Logger.GetInstance();
