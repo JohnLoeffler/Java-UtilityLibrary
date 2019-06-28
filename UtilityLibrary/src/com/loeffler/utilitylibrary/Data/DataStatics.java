@@ -16,7 +16,7 @@ import java.util.zip.Inflater;
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
  *    <em>@Github</em>    Github.com/JohnLoeffler
- *    <em>@Bitbucket</em> Bitbucket.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  */
 public class DataStatics {
   private static final Logger LOG = Logger.GetInstance();
