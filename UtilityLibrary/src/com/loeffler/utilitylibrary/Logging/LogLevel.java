@@ -1,9 +1,3 @@
-/*
- * 
- * 
- * 
- */
-
 package com.loeffler.utilitylibrary.Logging;
 
 import static com.loeffler.utilitylibrary.Logging.LogLevel.CRITICAL;
