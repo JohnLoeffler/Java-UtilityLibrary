@@ -1,9 +1,3 @@
-/*
- * 
- * 
- * 
- */
-
 package com.loeffler.utilitylibrary.Tools;
 import java.util.ArrayList;
 import java.util.List;
@@ -16,13 +10,20 @@ import java.util.List;
  *    <em>@Email</em>     John.Loeffler@gmail.com
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
- *    <em>@Github</em>    github.com/JohnLoeffler
- *    <em>@Website</em>   JohnLoeffler.com
+ *    <em>@Github</em>    Github.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
+ *
+ *  Adapted from a C++ timer I built because there are 20 different ways to
+ *    get milliseconds elapsed since epoch in C++, and they all suck. Java
+ *    makes it much easier, but sometimes its handy to just have a stopwatch
  */
 public class Timer{
+    /* DATA MEMBERS */
   private long        Start, Checkpoint, PauseTime;
   private List<Long>  Laps;
   private boolean     bActive, bPaused;
+  
+    /* MEMBER METHODS */
   /** Default Constructor */
   public Timer(){
     Laps = new ArrayList<>();
@@ -68,7 +69,7 @@ public class Timer{
    */
   public long         Stop()            {this.Checkpoint = Now(); this.bPaused = false; this.bActive = false; return this.Checkpoint - this.Start;}
   /**
-   * 
+   * TODO Fill this in!
    */
   public void         Pause()           {this.PauseTime = Now(); this.bPaused = true; }
   /**
