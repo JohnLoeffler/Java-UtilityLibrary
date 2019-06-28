@@ -1,9 +1,3 @@
-/*
- * 
- * 
- * 
- */
-
 package com.loeffler.utilitylibrary.SQL;
 
 /**
@@ -14,8 +8,8 @@ package com.loeffler.utilitylibrary.SQL;
  *    <em>@Email</em>     John.Loeffler@gmail.com
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
- *    <em>@Github</em>    github.com/JohnLoeffler
- *    <em>@Website</em>   JohnLoeffler.com
+ *    <em>@Github</em>    Github.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  */
 abstract public class SQLiteDatabase extends Database{
   public SQLiteDatabase(String url) throws Exception{
