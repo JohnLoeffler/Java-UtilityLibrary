@@ -1,9 +1,3 @@
-/*
- * 
- * 
- * 
- */
-
 package com.loeffler.utilitylibrary.SQL;
 
 import java.sql.Connection;
@@ -12,9 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.logging.Level;
-import static java.util.logging.Level.INFO;
-import java.util.logging.Logger;
+import com.loeffler.utilitylibrary.Logging.Logger;
 
 /**
  *  <p><strong>Database</strong></p>
@@ -24,11 +16,11 @@ import java.util.logging.Logger;
  *    <em>@Email</em>     John.Loeffler@gmail.com
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
- *    <em>@Github</em>    github.com/JohnLoeffler
- *    <em>@Website</em>   JohnLoeffler.com
+ *    <em>@Github</em>    Github.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  */
 abstract class Database {
-  private static final Logger LOG = Logger.getLogger(Database.class.getName());
+  protected static      Logger LOG = Logger.GetInstance();
   protected String      DBDriver  = "";
   protected String      DBUrl     = null;
   protected int         Timeout   = 30;
@@ -36,49 +28,52 @@ abstract class Database {
   protected Statement   Stmt      = null;
   protected PreparedStatement PS  = null;
   protected int         NextPKey  = 1;
+  /**
+  * Default constructor
+  */
   public  Database(){}
-  
+  //  TODO Add Javadocs
   public  Database(String driver, String url)throws Exception{
     Initialize(driver, url);
   }
-  
+  //  TODO Add Javadocs
   private void Initialize(String driver, String url)throws Exception{
     setDBDriver(driver);
     setDBUrl(url);
     setConnection();
     setStatement();
   }
-  
+  //  TODO Add Javadocs
   public boolean ShutdownDatabase(){
     if(this.Conn != null){
       try {
         Conn.close();
         return true;
       } catch (SQLException ex) {
-        LOG.log(INFO, String.format("Connection threw an SQLException when shutting down database: %s", ex.getMessage()));
+        //  TODO  Update the logging for thrown exceptions
         return false;
       }
     }
     return true;
   }
-
+  //  TODO Add Javadocs
   public void setDBDriver(String DBDriver) {
     this.DBDriver = DBDriver;
   }
-
+  //  TODO Add Javadocs
   public void setDBUrl(String DBUrl) {
     this.DBUrl = DBUrl;
   }
-
+  //  TODO Add Javadocs
   public void setTimeout(int Timeout) {
     this.Timeout = Timeout;
   }
-
+  //  TODO Add Javadocs
   public void setConnection() throws Exception{
     Class.forName(DBDriver);
     Conn = DriverManager.getConnection(DBUrl);
   }
-
+  //  TODO Add Javadocs
   public void setStatement() throws Exception{
     if(Conn == null){
       setConnection();
@@ -86,7 +81,7 @@ abstract class Database {
     Stmt = Conn.createStatement();
     Stmt.setQueryTimeout(Timeout);
   }
-  
+  //  TODO Add Javadocs
   public void setPreparedStatement(String sql) throws Exception {
     if(Conn == null){
       setConnection();
@@ -94,43 +89,42 @@ abstract class Database {
     PS = Conn.prepareStatement(sql);
     PS.setQueryTimeout(Timeout);
   }
-
+  //  TODO Add Javadocs
   public String getDBDriver() {
     return DBDriver;
   }
-
+  //  TODO Add Javadocs
   public String getDBUrl() {
     return DBUrl;
   }
-
+  //  TODO Add Javadocs
   public int getTimeout() {
     return Timeout;
   }
-
+  //  TODO Add Javadocs
   public Connection getConnection() {
     return Conn;
   }
-
+  //  TODO Add Javadocs
   public Statement getStatement() {
     return Stmt;
   }
-  
+  //  TODO Add Javadocs
   public void executeStatement(String sqlStatement)throws SQLException{
     Stmt.execute(sqlStatement);
   }
-  
+  //  TODO Add Javadocs
   public void executeStmt(String[] instructions) throws SQLException {
     for (String s: instructions) {
       executeStatement(s);
     }
   }
-  
+  //  TODO Add Javadocs
   public ResultSet executeQuery(String query) throws SQLException{
     return Stmt.executeQuery(query);
   }
-  
+  //  TODO Add Javadocs
   public void closeConnection(){
     try{ Conn.close(); } catch (Exception whatever){}
   }
-  
 }
