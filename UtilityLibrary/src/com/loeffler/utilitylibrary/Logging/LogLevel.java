@@ -20,12 +20,12 @@ import static com.loeffler.utilitylibrary.Logging.LogLevel.WARNING;
  *    <em>@Email</em>     John.Loeffler@gmail.com
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
- *    <em>@Github</em>    github.com/JohnLoeffler
- *    <em>@Website</em>   JohnLoeffler.com
+ *    <em>@Github</em>    Github.com/JohnLoeffler
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  * 
- *  <strong>@Description</strong>: A custom LogLevel for use with the JLogger; 
+ *  <strong>@Description</strong>: A custom LogLevel for use with the Logger; 
  *    values so far:
- *    0:  TEST    - USED FOR RECORDING UNIT AND INTEGRATION TESTING
+ *    0:  TEST    - USED FOR RECORDING UNIT TESTING
  *    1:  INFO    - GENERAL INFO LOG
  *    2:  DEBUG   - USED WHEN DEBUG
  *    3:  WARNING - USED WHEN AN UNEXPECTED RESULT OCCURS, BUT DOESN'T RESULT IN
