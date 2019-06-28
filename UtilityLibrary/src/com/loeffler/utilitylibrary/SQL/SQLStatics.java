@@ -7,11 +7,6 @@ import java.sql.DriverManager;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.io.File;
-import java.util.logging.Level;
-import static java.util.logging.Level.INFO;
-import static java.util.logging.Level.SEVERE;
-import static java.util.logging.Level.WARNING;
-import java.util.logging.Logger;
 
 /**
  *  <p><strong>SQLStatics</strong></p>
@@ -23,46 +18,46 @@ import java.util.logging.Logger;
  *    <em>@Twitter</em>   @ThisDotJohn
  *    <em>@LinkedIn</em>  LinkedIn.com/in/JohnLoeffler
  *    <em>@Github</em>    github.com/JohnLoeffler
- *    <em>@Website</em>   JohnLoeffler.com
+ *    <em>@Bitbucket</em> Bitbucket.org/JohnLoeffler
  */
 public class SQLStatics extends Statics{
-  
+  //TODO  Add Javadoc
   public static Connection ConnectToSQLiteDB(String filepath){
     File f = new File(filepath);
     if(!(f.exists() || f.isDirectory())){
-      //LOG.log(SEVERE, String.format("Error! Database at %s does not exist!", filepath));
+      //TODO  Add Error messaging to new Log system
       return null;
     }
     Connection conn = null;
     try{
       conn = DriverManager.getConnection(String.format("jdbc:sqlite:%s", filepath));
       if(conn == null || conn.isClosed()){
-        //LOG.log(SEVERE, String.format("Database Connection failed to Open"));
+        //TODO  Add Error messaging to new Log system
       }else{
         
         
       }
     }catch(SQLException sqle){
-      //LOG.log(SEVERE, String.format("Database Connection failed: %s\n\t%s",filepath, sqle.getMessage()));
+      //TODO  Add Error messaging to new Log system
     } finally {
       try {
         if (conn != null) {
             conn.close();
         }
       } catch (SQLException ex) {
-        System.out.println(ex.getMessage());
+        //TODO  Add Error messaging to new Log system
       }
     }
     try {
       if(conn.isClosed()){
-      //  LOG.log(SEVERE, String.format("Database Connectiion Closed Out"));
+      //TODO  Add Error messaging to new Log system
       }
     } catch (SQLException ex) {
-    //  LOG.log(SEVERE, String.format("Database Connectiion Is NULL"));
+    //TODO  Add Error messaging to new Log system
     }
     return conn;
   }
-  
+  //TODO  Add Javadoc
   public static Connection CreateNewSQLiteDatabase(String filename){
     Connection conn = null;
     String url = "jdbc:sqlite:" + CWD() + filename;
@@ -70,23 +65,22 @@ public class SQLStatics extends Statics{
       conn = DriverManager.getConnection(url);
       if (conn != null) {
         DatabaseMetaData meta = conn.getMetaData();
-        System.out.println("The driver name is " + meta.getDriverName());
-        System.out.println("A new database has been created.");
+        //TODO  Add Info messaging to new Log system
       }
     } catch (SQLException e) {
-      System.out.println(e.getMessage());
+      //TODO  Add error messaging to new Log system
     }finally{
       try{
         if(conn != null){
           conn.close();
         }
       }catch(SQLException sqle){
-        System.out.println(sqle.getMessage());
+        //TODO  Add error messaging to new Log system
       }
     }
     return conn;
   }
-
+  //TODO  Add Javadoc
   public static boolean ExecuteDynamicStatement(Connection conn, String sqlStatement){
     if(conn == null || sqlStatement.isEmpty()){
       return false;
@@ -97,12 +91,11 @@ public class SQLStatics extends Statics{
         statement.execute(sqlStatement);
         return true;
       }catch(SQLException sqle){
-//        LOG.log(WARNING, String.format("Statement threw Exception on executing this statement: %s \n\t", sqlStatement));
-//        LOG.log(WARNING, String.format("%s ", sqle.getMessage()));
+        //TODO  Add error messaging to new Log system
         return false;
       }
     }catch(SQLException sqle){
-//      LOG.log(SEVERE, String.format("Connection threw Exception when creating Statement: %s ", sqle.getMessage()));
+      //TODO  Add error messaging to new Log system
       return false;
     }
   }
